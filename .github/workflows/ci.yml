@@ -29,6 +29,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Give Gradle wrapper execute permissions
+        run: chmod +x ./gradlew
+
       - name: Build with Gradle
         run: ./gradlew build  # Gradle로 빌드 수행
 
