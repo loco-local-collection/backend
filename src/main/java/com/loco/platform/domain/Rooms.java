@@ -2,10 +2,13 @@ package com.loco.platform.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Rooms extends BaseEntity {
 
     @Id
@@ -20,6 +23,7 @@ public class Rooms extends BaseEntity {
 
     @NotNull
     private String name;
+
     @Lob
     @Column(columnDefinition = "TEXT")
     private String description;

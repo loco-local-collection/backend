@@ -2,15 +2,16 @@ package com.loco.platform.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import java.sql.Timestamp;
-import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AttributeOverrides({
-    @AttributeOverride(name = "createdAt", column = @Column(name = "joined_at", nullable = false, updatable = false)), // createdAt -> joinedAt 변경
-    @AttributeOverride(name = "updatedAt", column = @Column(insertable = false, updatable = false)) // updatedAt 제외
+    @AttributeOverride(name = "createdAt", column = @Column(name = "joined_at", nullable = false, updatable = false)),
+    @AttributeOverride(name = "updatedAt", column = @Column(insertable = false, updatable = false))
 })
 public class RoomMembers extends BaseEntity {
 
