@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # CI 서버에서 사용할 운영체제, 배포 서버와는 무관
+    runs-on: ubuntu-latest  # CI 서버에서 사용할 운영체제
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '21'  # JDK 21 설정
-          distribution: 'adoptopenjdk'  # AdoptOpenJDK 배포판 사용
+          distribution: 'temurin'
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
@@ -28,6 +28,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      - name: Give Gradle wrapper execute permissions
+        run: chmod +x ./gradlew
 
       - name: Build with Gradle
         run: ./gradlew build  # Gradle로 빌드 수행
