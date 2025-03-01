@@ -2,10 +2,13 @@ package com.loco.platform.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AttributeOverride(name = "updatedAt", column = @Column(insertable = false, updatable = false))
 public class RoomTags extends BaseEntity {
 
