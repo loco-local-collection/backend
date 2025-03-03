@@ -17,7 +17,6 @@ public abstract class BaseEntity {
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @NotNull
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;

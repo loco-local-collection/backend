@@ -25,6 +25,6 @@ public class Places extends BaseEntity {
     private Locations locations;
 
     @NotNull
-    @JoinColumn(name = "added_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id")
     private Users users;
 }
