@@ -16,6 +16,6 @@ public class Tags extends BaseEntity {
     @Column(name = "tag_id")
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 }

@@ -17,12 +17,10 @@ public class Favorites extends BaseEntity {
     @Column(name = "favorite_id")
     private Long id;
 
-    @NotNull
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
-    @NotNull
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id", nullable = false)
     private Rooms rooms;
 
     @Column(name = "is_active")

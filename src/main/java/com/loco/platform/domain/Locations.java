@@ -16,10 +16,10 @@ public class Locations extends BaseEntity {
     @Column(name = "location_id")
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
-    @NotNull
+    @Column(nullable = false)
     private String address;
 
     private double latitude;

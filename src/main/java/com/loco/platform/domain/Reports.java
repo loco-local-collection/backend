@@ -17,20 +17,16 @@ public class Reports extends BaseEntity {
     @Column(name = "report_id")
     private Long id;
 
-    @NotNull
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
-    @NotNull
-    @JoinColumn(name = "reported_user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "reported_user_id", referencedColumnName = "user_id", nullable = false)
     private Users reportedUser;
 
-    @NotNull
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id", nullable = false)
     private Rooms rooms;
 
-    @NotNull
-    @JoinColumn(name = "place_id")
+    @JoinColumn(name = "place_id", nullable = false)
     private Places places;
 
     @Lob

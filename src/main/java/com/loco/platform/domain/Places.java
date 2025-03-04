@@ -16,15 +16,12 @@ public class Places extends BaseEntity {
     @Column(name = "place_id")
     private Long id;
 
-    @NotNull
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id", nullable = false)
     private Rooms rooms;
 
-    @NotNull
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location_id", nullable = false)
     private Locations locations;
 
-    @NotNull
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 }

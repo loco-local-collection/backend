@@ -18,11 +18,11 @@ public class Users extends BaseEntity {
     @Column(name = "user_id")
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String email;
     private String password;
 
-    @NotNull
+    @Column(nullable = false)
     private String nickname;
 
     @Column(name = "profile_image")
