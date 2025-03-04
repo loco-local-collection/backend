@@ -17,12 +17,10 @@ public class RoomTags extends BaseEntity {
     @Column(name = "room_tag_id")
     private Long id;
 
-    @NotNull
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id", nullable = false)
     private Rooms rooms;
 
-    @NotNull
-    @JoinColumn(name = "tag_id")
+    @JoinColumn(name = "tag_id", nullable = false)
     private Tags tags;
 
 }

@@ -16,12 +16,11 @@ public class Rooms extends BaseEntity {
     @Column(name = "room_id")
     private Long id;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
     @Lob
