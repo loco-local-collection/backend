@@ -17,8 +17,8 @@ public class Feedback extends BaseEntity {
     @Column(name = "feedback_id")
     private Long id;
 
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private Users users;
 
     @Lob
     @Column(columnDefinition = "TEXT")

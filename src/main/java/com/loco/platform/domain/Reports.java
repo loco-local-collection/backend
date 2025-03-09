@@ -17,17 +17,17 @@ public class Reports extends BaseEntity {
     @Column(name = "report_id")
     private Long id;
 
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
-
-    @JoinColumn(name = "reported_user_id", referencedColumnName = "user_id", nullable = false)
-    private Users reportedUser;
-
-    @JoinColumn(name = "room_id", nullable = false)
-    private Rooms rooms;
-
-    @JoinColumn(name = "place_id", nullable = false)
-    private Places places;
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private Users users;
+//
+//    @JoinColumn(name = "reported_user_id", referencedColumnName = "user_id", nullable = false)
+//    private Users reportedUser;
+//
+//    @JoinColumn(name = "room_id", nullable = false)
+//    private Rooms rooms;
+//
+//    @JoinColumn(name = "place_id", nullable = false)
+//    private Places places;
 
     @Lob
     @Column(columnDefinition = "TEXT")

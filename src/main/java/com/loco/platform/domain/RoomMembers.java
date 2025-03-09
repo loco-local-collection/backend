@@ -20,11 +20,11 @@ public class RoomMembers extends BaseEntity {
     @Column(name = "room_member_id")
     private Long id;
 
-    @JoinColumn(name = "room_id", nullable = false)
-    private Rooms rooms;
-
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+//    @JoinColumn(name = "room_id", nullable = false)
+//    private Rooms rooms;
+//
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private Users users;
 
     private String role;
 

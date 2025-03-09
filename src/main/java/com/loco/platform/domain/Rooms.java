@@ -16,9 +16,9 @@ public class Rooms extends BaseEntity {
     @Column(name = "room_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private Users users;
 
     @Column(nullable = false)
     private String name;

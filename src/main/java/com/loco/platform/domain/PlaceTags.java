@@ -17,10 +17,10 @@ public class PlaceTags extends BaseEntity {
     @Column(name = "place_tag_id")
     private Long id;
 
-    @JoinColumn(name = "place_id", nullable = false)
-    private Places places;
-
-    @JoinColumn(name = "tag_id", nullable = false)
-    private Tags tags;
+//    @JoinColumn(name = "place_id", nullable = false)
+//    private Places places;
+//
+//    @JoinColumn(name = "tag_id", nullable = false)
+//    private Tags tags;
 
 }

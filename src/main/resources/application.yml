@@ -18,3 +18,16 @@ spring:
           batch_size: 100
         order_inserts: true
         order_updates: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: "${custom.oauth2.client-id}"
+            client-secret: "${custom.oauth2.client-secret}"
+            scope:
+              - profile
+              - email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com/.well-known/openid-configuration

@@ -42,8 +42,8 @@ public class Users extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-//    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Rooms> rooms = new ArrayList<>();
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rooms> rooms = new ArrayList<>();
 
     @Builder
     public Users(String nickname, String email, String profileImage, String memberKey, Role role) {
