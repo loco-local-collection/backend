@@ -1,8 +1,10 @@
 package com.loco.platform.domain;
 
+import com.loco.platform.dto.request.SaveRoomDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,4 +35,13 @@ public class Rooms extends BaseEntity {
     @Column(name = "share_link", unique = true)
     private String shareLink;
 
+    @Builder
+    public Rooms(Long id, Users users, String name, String description, boolean isPrivate, String shareLink) {
+        this.id = id;
+        this.users = users;
+        this.name = name;
+        this.description = description;
+        this.isPrivate = isPrivate;
+        this.shareLink = shareLink;
+    }
 }
