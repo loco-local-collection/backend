@@ -2,6 +2,7 @@ package com.loco.platform.config.jwt;
 
 import static com.loco.platform.exception.ErrorCode.INVALID_JWT_SIGNATURE;
 import static com.loco.platform.exception.ErrorCode.INVALID_TOKEN;
+import static com.loco.platform.exception.ErrorCode.TOKEN_EXPIRED;
 
 import com.loco.platform.domain.Token;
 import com.loco.platform.exception.TokenException;
@@ -114,7 +115,7 @@ public class TokenProvider {
             return Jwts.parser().verifyWith(secretKey).build()
                     .parseSignedClaims(token).getPayload();
         } catch (ExpiredJwtException e) {
-            return e.getClaims();
+            throw new TokenException(TOKEN_EXPIRED);
         } catch (MalformedJwtException e) {
             throw new TokenException(INVALID_TOKEN);
         } catch (SecurityException e) {
