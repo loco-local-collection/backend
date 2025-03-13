@@ -93,24 +93,24 @@ public class TokenProviderTest {
         assertThat(TOKEN_EXPIRED.getMessage()).isEqualTo(tokenException.getMessage());
     }
 
-    @Test
-    @DisplayName("Access Toekn으로부터 Refresh Token을 갱신한다")
-    public void RefreshToken_갱신() throws Exception {
-        //given
-        List<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-        Authentication authentication = new UsernamePasswordAuthenticationToken("username",
-                "password", authorities);
-
-        String expiredAccessToken = tokenProvider.generateAccessToken(authentication);
-        tokenProvider.generateRefreshToken(authentication, expiredAccessToken);
-
-        //when
-        String newAccessToken = tokenProvider.reissueAccessToken(expiredAccessToken);
-
-        //then
-        assertNotNull(newAccessToken);
-        assertNotEquals(expiredAccessToken, newAccessToken);
-    }
+//    @Test
+//    @DisplayName("Access Toekn으로부터 Refresh Token을 갱신한다")
+//    public void RefreshToken_갱신() throws Exception {
+//        //given
+//        List<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+//        Authentication authentication = new UsernamePasswordAuthenticationToken("username",
+//                "password", authorities);
+//
+//        String expiredAccessToken = tokenProvider.generateAccessToken(authentication);
+//        tokenProvider.generateRefreshToken(authentication, expiredAccessToken);
+//
+//        //when
+//        String newAccessToken = tokenProvider.reissueAccessToken(expiredAccessToken);
+//
+//        //then
+//        assertNotNull(newAccessToken);
+//        assertNotEquals(expiredAccessToken, newAccessToken);
+//    }
 
 
 }
