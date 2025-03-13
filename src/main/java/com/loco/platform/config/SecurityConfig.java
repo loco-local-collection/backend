@@ -4,6 +4,7 @@ import com.loco.platform.config.filter.TokenAuthenticationFilter;
 import com.loco.platform.config.filter.TokenExceptionFilter;
 import com.loco.platform.config.handler.CustomAccessDeniedHandler;
 import com.loco.platform.config.handler.CustomAuthenticationEntryPoint;
+import com.loco.platform.config.handler.OAuth2FailureHandler;
 import com.loco.platform.config.handler.OAuth2SuccessHandler;
 import com.loco.platform.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class SecurityConfig {
 
     private final CustomOAuth2UserService oAuth2UserService;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
+    private final OAuth2FailureHandler oAuth2FailureHandler;
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
 
     @Bean
@@ -61,6 +63,7 @@ public class SecurityConfig {
                 .oauth2Login((oauth2) -> oauth2
                         .userInfoEndpoint(c -> c.userService(oAuth2UserService))
                         .successHandler(oAuth2SuccessHandler)
+                        .failureHandler(oAuth2FailureHandler)
                 )
 
                 .addFilterBefore(tokenAuthenticationFilter,
