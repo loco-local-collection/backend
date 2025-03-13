@@ -19,6 +19,7 @@ public record OAuth2UserInfo(
     public static OAuth2UserInfo of(String registrationId, Map<String, Object> attributes) {
         return switch (registrationId) {
             case "google" -> ofGoogle(attributes);
+            case "naver" -> ofNaver(attributes);
             default -> throw new AuthException(ILLEGAL_REGISTRATION_ID);
         };
     }
@@ -28,6 +29,15 @@ public record OAuth2UserInfo(
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
                 .profile((String) attributes.get("picture"))
+                .build();
+    }
+
+    private static OAuth2UserInfo ofNaver(Map<String, Object> attributes) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+        return OAuth2UserInfo.builder()
+                .name((String) response.get("nickname"))
+                .email((String) response.get("email"))
+                .profile((String) response.get("profile_image"))
                 .build();
     }
 
