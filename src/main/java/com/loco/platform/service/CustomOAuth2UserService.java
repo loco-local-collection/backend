@@ -37,7 +37,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private Users getOrSave(OAuth2UserInfo oAuth2UserInfo) {
-        Users user = userRepository.findByEmail(oAuth2UserInfo.email())
+        Users user = userRepository.findByProfileImage(oAuth2UserInfo.profile())
                 .orElseGet(oAuth2UserInfo::toEntity);
         return userRepository.save(user);
     }
