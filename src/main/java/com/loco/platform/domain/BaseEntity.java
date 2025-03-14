@@ -2,7 +2,6 @@ package com.loco.platform.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;

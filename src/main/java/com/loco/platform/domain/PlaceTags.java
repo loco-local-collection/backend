@@ -1,7 +1,12 @@
 package com.loco.platform.domain;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +22,10 @@ public class PlaceTags extends BaseEntity {
     @Column(name = "place_tag_id")
     private Long id;
 
-    @JoinColumn(name = "place_id", nullable = false)
-    private Places places;
-
-    @JoinColumn(name = "tag_id", nullable = false)
-    private Tags tags;
+//    @JoinColumn(name = "place_id", nullable = false)
+//    private Places places;
+//
+//    @JoinColumn(name = "tag_id", nullable = false)
+//    private Tags tags;
 
 }

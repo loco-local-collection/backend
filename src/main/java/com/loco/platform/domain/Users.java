@@ -1,7 +1,12 @@
 package com.loco.platform.domain;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
@@ -35,6 +40,6 @@ public class Users extends BaseEntity {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rooms> rooms = new ArrayList<>();
+//    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Rooms> rooms = new ArrayList<>();
 }
