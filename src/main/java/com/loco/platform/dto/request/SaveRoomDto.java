@@ -1,6 +1,7 @@
 package com.loco.platform.dto.request;
 
 import com.loco.platform.domain.Users;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,5 +18,7 @@ public class SaveRoomDto {
     private String roomName;
 
     private String description;
+
+    private List<String> tags;
 
 }

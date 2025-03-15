@@ -1,10 +1,11 @@
 package com.loco.platform.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -37,4 +38,19 @@ public class Users extends BaseEntity {
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rooms> rooms = new ArrayList<>();
+
+    @Builder
+    public Users(Long id, String email, String password, String nickname, String profileImage,
+        String provider, String socialId, boolean isDeleted, List<Rooms> rooms, Timestamp createdAt) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.profileImage = profileImage;
+        this.provider = provider;
+        this.socialId = socialId;
+        this.isDeleted = isDeleted;
+        this.rooms = rooms;
+        super.createdAt = createdAt;
+    }
 }

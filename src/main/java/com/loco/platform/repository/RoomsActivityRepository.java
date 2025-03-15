@@ -19,4 +19,15 @@ public class RoomsActivityRepository {
                 .setParameter("id", input.getId())
                 .executeUpdate() == 1;
     }
+
+    public boolean delete(Long roomId, Long userId) {
+        entityManager.createQuery("DELETE FROM RoomTags rt WHERE rt.rooms.id = :roomdId")
+            .setParameter("roomdId", roomId)
+            .executeUpdate();
+
+        return entityManager.createQuery("DELETE FROM Rooms r WHERE r.users.id = :userId and r.id=:id")
+            .setParameter("userId", userId)
+            .setParameter("id", roomId)
+            .executeUpdate() == 1;
+    }
 }

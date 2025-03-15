@@ -1,8 +1,8 @@
 package com.loco.platform.domain;
 
-import com.loco.platform.dto.request.SaveRoomDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,9 +25,15 @@ public class Rooms extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @Lob
+    //@Lob
+    // 큰 데이터를 한개의 table에 두지않고 여러 table에 나누어둠 -> 여러 table의 값을 필요한 부분만 나누어 읽는 기술을 사용할 때 사용됨
+    // 일반 select 문 조회시 오류 발생 -> 제외시킴
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "tag_id")
+    @OneToMany(mappedBy = "rooms", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<RoomTags> tags = new ArrayList<>();
 
     @Column(name = "is_private")
     private boolean isPrivate = false;
@@ -36,12 +42,17 @@ public class Rooms extends BaseEntity {
     private String shareLink;
 
     @Builder
-    public Rooms(Long id, Users users, String name, String description, boolean isPrivate, String shareLink) {
+    public Rooms(Long id, Users users, String name, String description,
+        boolean isPrivate, String shareLink) {
         this.id = id;
         this.users = users;
         this.name = name;
         this.description = description;
         this.isPrivate = isPrivate;
         this.shareLink = shareLink;
+    }
+
+    public void addTags(List<RoomTags> roomTags) {
+        this.tags.addAll(roomTags);
     }
 }
