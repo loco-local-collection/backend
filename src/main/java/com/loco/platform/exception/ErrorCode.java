@@ -23,7 +23,7 @@ public enum ErrorCode {
     NOT_EXIST_USER(NOT_FOUND, "유저가 존재하지 않습니다."),
 
     // room
-    BAD_USER_REQUEST(BAD_REQUEST, "작성자가 아닙니다"),
+    BAD_USER_REQUEST(BAD_REQUEST, "작성자가 아니거나 존재하지 않습니다"),
     // room tags
     NOT_EXIST_ROOM_TAG(NOT_FOUND, "요청된 room tag가 존재하지 않습니다");
 

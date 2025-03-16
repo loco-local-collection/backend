@@ -36,7 +36,7 @@ public class Users extends BaseEntity {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "users", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<Rooms> rooms = new ArrayList<>();
 
     @Builder
