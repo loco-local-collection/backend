@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Rooms, Long> {
 
-    @Query("select r from Rooms r where r.users.id = :userId")
+    @Query("select r from Rooms r left join fetch r.tags as rt left join fetch rt.tags where r.users.id = :userId")
     List<Rooms> findByUserId(@Param("userId") Long userId);
 
 }

@@ -31,8 +31,8 @@ public class Rooms extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "tag_id")
-    @OneToMany(mappedBy = "rooms", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @Column
+    @OneToMany(mappedBy = "rooms",fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<RoomTags> tags = new ArrayList<>();
 
     @Column(name = "is_private")

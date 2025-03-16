@@ -21,7 +21,7 @@ public class RoomTags extends BaseEntity {
     @JoinColumn(name = "room_id", nullable = false)
     private Rooms rooms;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tag_id", nullable = false)
     private Tags tags;
 

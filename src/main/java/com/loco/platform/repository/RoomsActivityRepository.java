@@ -3,6 +3,7 @@ package com.loco.platform.repository;
 import com.loco.platform.domain.Rooms;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
