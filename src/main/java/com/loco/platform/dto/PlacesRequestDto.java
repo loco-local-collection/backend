@@ -18,4 +18,14 @@ public class PlacesRequestDto {
             .locations(location)
             .build();
     }
+
+    // 추가: LocationsRequestDto를 Locations로 변환하는 메서드
+    public Locations toEntity() {
+        return Locations.builder()
+            .name(location.getName())
+            .address(location.getAddress())
+            .latitude(location.getLatitude())
+            .longitude(location.getLongitude())
+            .build();
+    }
 }

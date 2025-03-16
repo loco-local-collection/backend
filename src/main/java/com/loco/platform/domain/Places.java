@@ -37,4 +37,8 @@ public class Places extends BaseEntity {
     public Places(Locations locations) {
         this.locations = locations;
     }
+
+    public void setLocations(Locations locations) {
+        this.locations = locations;
+    }
 }

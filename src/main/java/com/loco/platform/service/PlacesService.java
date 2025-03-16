@@ -39,4 +39,29 @@ public class PlacesService {
             .map(PlacesResponseDto::fromEntity)
             .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void deletePlace(Long placeId) {
+
+        Places place = placesRepository.findById(placeId)
+            .orElseThrow(() -> new IllegalArgumentException("해당 장소가 존재하지 않습니다."));
+
+        placesRepository.deleteById(placeId);
+    }
+
+    @Transactional
+    public PlacesResponseDto updatePlace(Long placeId, PlacesRequestDto placesRequestDto) {
+        Places place = placesRepository.findById(placeId)
+            .orElseThrow(() -> new IllegalArgumentException("해당 장소가 존재하지 않습니다."));
+
+        Locations location = placesRequestDto.getLocation().toEntity();
+        locationsRepository.save(location); // Locations 업데이트
+
+        place.setLocations(location); // Places 새로운 Locations 설정
+        Places updatedPlace = placesRepository.save(place); // Places 저장
+
+        return PlacesResponseDto.fromEntity(updatedPlace);
+    }
+
+
 }
