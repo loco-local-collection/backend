@@ -20,32 +20,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PlacesController {
 
-    private final PlacesService placesService;
+  private final PlacesService placesService;
 
-    @PostMapping
-    public ResponseEntity<PlacesResponseDto> createPlace(@RequestBody PlacesRequestDto requestDto) {
+  @PostMapping
+  public ResponseEntity<PlacesResponseDto> createPlace(@RequestBody PlacesRequestDto requestDto) {
 
-        PlacesResponseDto savedPlace = placesService.savePlace(requestDto);
-        return ResponseEntity.ok(savedPlace);
-    }
+    PlacesResponseDto savedPlace = placesService.savePlace(requestDto);
+    return ResponseEntity.ok(savedPlace);
+  }
 
-    @GetMapping
-    public ResponseEntity<List<PlacesResponseDto>> getAllPlaces() {
-        return ResponseEntity.ok(placesService.getAllPlaces());
-    }
+  @GetMapping
+  public ResponseEntity<List<PlacesResponseDto>> getAllPlaces() {
+    return ResponseEntity.ok(placesService.getAllPlaces());
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlace(@PathVariable Long id) {
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deletePlace(@PathVariable Long id) {
 
-        placesService.deletePlace(id);
-        return ResponseEntity.noContent().build();
-    }
+    placesService.deletePlace(id);
+    return ResponseEntity.noContent().build();
+  }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PlacesResponseDto> updatePlace(
-        @PathVariable Long id,
-        @RequestBody PlacesRequestDto requestDto) {
-        PlacesResponseDto updatedPlace = placesService.updatePlace(id, requestDto);
-        return ResponseEntity.ok(updatedPlace);
-    }
+  @PutMapping("/{id}")
+  public ResponseEntity<PlacesResponseDto> updatePlace(
+      @PathVariable Long id, @RequestBody PlacesRequestDto requestDto) {
+    PlacesResponseDto updatedPlace = placesService.updatePlace(id, requestDto);
+    return ResponseEntity.ok(updatedPlace);
+  }
 }

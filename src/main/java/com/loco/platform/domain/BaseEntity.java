@@ -11,12 +11,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 @MappedSuperclass
 public abstract class BaseEntity {
 
-    @Column(name = "created_at", updatable = false, nullable = false)
-    @CreationTimestamp
-    private Timestamp createdAt;
+  @Column(name = "created_at", updatable = false, nullable = false)
+  @CreationTimestamp
+  private Timestamp createdAt;
 
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private Timestamp updatedAt;
-
+  @Column(name = "updated_at")
+  @UpdateTimestamp
+  private Timestamp updatedAt;
 }

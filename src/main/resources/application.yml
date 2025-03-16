@@ -44,8 +44,6 @@ spring:
           batch_size: 100
         order_inserts: true
         order_updates: true
-
-
 #spring:
 #  config:
 #    import: "optional:classpath:application-security.yml"

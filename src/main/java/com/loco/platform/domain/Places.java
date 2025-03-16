@@ -20,25 +20,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Places extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "place_id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "place_id")
+  private Long id;
 
-//    private Users users;
-//
-//    private Rooms rooms;
+  //    private Users users;
+  //
+  //    private Rooms rooms;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id", nullable = false)
-    private Locations locations;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "location_id", nullable = false)
+  private Locations locations;
 
-    @Builder
-    public Places(Locations locations) {
-        this.locations = locations;
-    }
+  @Builder
+  public Places(Locations locations) {
+    this.locations = locations;
+  }
 
-    public void setLocations(Locations locations) {
-        this.locations = locations;
-    }
+  public void setLocations(Locations locations) {
+    this.locations = locations;
+  }
 }

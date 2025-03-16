@@ -15,25 +15,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Locations extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "location_id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "location_id")
+  private Long id;
 
-    @Column(nullable = false)
-    private String name;
+  @Column(nullable = false)
+  private String name;
 
-    @Column(nullable = false)
-    private String address;
+  @Column(nullable = false)
+  private String address;
 
-    private double latitude;
-    private double longitude;
+  private double latitude;
+  private double longitude;
 
-    @Builder
-    public Locations(String name, String address, double latitude, double longitude) {
-        this.name = name;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+  @Builder
+  public Locations(String name, String address, double latitude, double longitude) {
+    this.name = name;
+    this.address = address;
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
 }

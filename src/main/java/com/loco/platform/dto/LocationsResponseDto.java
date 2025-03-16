@@ -10,19 +10,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LocationsResponseDto {
 
-    private Long id;
-    private String name;
-    private String address;
-    private double latitude;
-    private double longitude;
+  private Long id;
+  private String name;
+  private String address;
+  private double latitude;
+  private double longitude;
 
-    public static LocationsResponseDto fromEntity(Locations locations) {
-        return new LocationsResponseDto(
-            locations.getId(),
-            locations.getName(),
-            locations.getAddress(),
-            locations.getLatitude(),
-            locations.getLongitude()
-        );
-    }
+  public static LocationsResponseDto fromEntity(Locations locations) {
+    return new LocationsResponseDto(
+        locations.getId(),
+        locations.getName(),
+        locations.getAddress(),
+        locations.getLatitude(),
+        locations.getLongitude());
+  }
 }

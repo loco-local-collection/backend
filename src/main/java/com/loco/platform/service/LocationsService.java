@@ -14,20 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class LocationsService {
 
-    private final LocationsRepository locationsRepository;
+  private final LocationsRepository locationsRepository;
 
-    @Transactional
-    public LocationsResponseDto saveLocation(LocationsRequestDto locationsRequestDto) {
-        Locations location = locationsRequestDto.toEntity();
-        Locations savedLocation = locationsRepository.save(location);
-        return LocationsResponseDto.fromEntity(savedLocation);
-    }
+  @Transactional
+  public LocationsResponseDto saveLocation(LocationsRequestDto locationsRequestDto) {
+    Locations location = locationsRequestDto.toEntity();
+    Locations savedLocation = locationsRepository.save(location);
+    return LocationsResponseDto.fromEntity(savedLocation);
+  }
 
-    @Transactional(readOnly = true)
-    public List<LocationsResponseDto> getAllLocations() {
-        return locationsRepository.findAll()
-            .stream()
-            .map(LocationsResponseDto::fromEntity)
-            .collect(Collectors.toList());
-    }
+  @Transactional(readOnly = true)
+  public List<LocationsResponseDto> getAllLocations() {
+    return locationsRepository.findAll().stream()
+        .map(LocationsResponseDto::fromEntity)
+        .collect(Collectors.toList());
+  }
 }

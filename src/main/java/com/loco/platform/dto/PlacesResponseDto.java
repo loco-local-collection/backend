@@ -10,14 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PlacesResponseDto {
 
-    private Long id;
-    private LocationsResponseDto location;
+  private Long id;
+  private LocationsResponseDto location;
 
-    public static PlacesResponseDto fromEntity(Places place) {
-        return new PlacesResponseDto(
-            place.getId(),
-            LocationsResponseDto.fromEntity(place.getLocations())
-        );
-    }
-
+  public static PlacesResponseDto fromEntity(Places place) {
+    return new PlacesResponseDto(
+        place.getId(), LocationsResponseDto.fromEntity(place.getLocations()));
+  }
 }

@@ -55,10 +55,10 @@ public class PlacesService {
             .orElseThrow(() -> new IllegalArgumentException("해당 장소가 존재하지 않습니다."));
 
         Locations location = placesRequestDto.getLocation().toEntity();
-        locationsRepository.save(location); // Locations 업데이트
+        locationsRepository.save(location);
 
-        place.setLocations(location); // Places 새로운 Locations 설정
-        Places updatedPlace = placesRepository.save(place); // Places 저장
+        place.setLocations(location);
+        Places updatedPlace = placesRepository.save(place);
 
         return PlacesResponseDto.fromEntity(updatedPlace);
     }
