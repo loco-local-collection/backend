@@ -39,4 +39,5 @@ out/
 
 ~*
 *~
-application-test.yml
+application-test-security.yml
+spy.log
