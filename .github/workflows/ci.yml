@@ -11,6 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest  # CI 서버에서 사용할 운영체제
+
+    services:
+      redis:
+        image: redis:latest  # Redis Docker 이미지
+        ports:
+          - 6379:6379       # Redis 기본 포트 매핑
+        options: --health-cmd "redis-cli ping" --health-timeout 5s --health-retries 3
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4  # 최신 버전 사용
@@ -31,6 +39,9 @@ jobs:
 
       - name: Give Gradle wrapper execute permissions
         run: chmod +x ./gradlew
+
+      - name: Set JWT_KEY environment variable
+        run: echo "JWT_KEY=${{ secrets.JWT_KEY }}" >> $GITHUB_ENV
 
       - name: Build with Gradle
         run: ./gradlew build  # Gradle로 빌드 수행

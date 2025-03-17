@@ -1,42 +1,36 @@
 spring:
   config:
-    import: "optional:classpath:application-security.yml"
-  application:
-    name: "LOCO - Local Collection Platform"
-  datasource:
-    url: "${custom.datasource.url}"
-    username: "${custom.datasource.username}"
-    driver-class-name: "org.postgresql.Driver"
-    hikari:
-      maximum-pool-size: 5
+    import: "optional:classpath:application-test-security.yml"
+  datasource :
+    url: jdbc:h2:mem:test
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
   jpa:
-    database-platform: "org.hibernate.dialect.PostgreSQLDialect"
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: create-drop
     properties:
       hibernate:
-        jdbc:
-          batch_size: 100
-        order_inserts: true
-        order_updates: true
+        format_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: "${custom.oauth2.google.client-id}"
-            client-secret: "${custom.oauth2.google.client-secret}"
+            client-id: test-client-id
+            client-secret: test-client-secret
             scope:
               - profile
               - email
 
           naver:
-            client-id: "${custom.oauth2.naver.client-id}"
-            client-secret: "${custom.oauth2.naver.client-secret}"
+            client-id: test-client-id
+            client-secret: test-client-secret
             client-authentication-method: client_secret_post
             authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            redirect-uri: test-redirect-uri
             scope:
               - name
               - email
@@ -44,9 +38,9 @@ spring:
             client-name: Naver
 
           kakao:
-            client-id: "${custom.oauth2.kakao.client-id}"
-            client-secret: "${custom.oauth2.kakao.client-secret}"
-            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
+            client-id: test-client-id
+            client-secret: test-client-secret
+            redirect-uri: test-redirect-uri
             client-authentication-method: client_secret_post # kakao는 인증 토큰 발급 요청 메서드가 post이다. (최근 버전에는 작성 방법이 이렇게 바뀌었다.)
             authorization-grant-type: authorization_code
             scope: # kakao 개인 정보 동의 항목 설정의 ID 값
@@ -60,7 +54,7 @@ spring:
             authorization-uri: https://nid.naver.com/oauth2.0/authorize
             token-uri: https://nid.naver.com/oauth2.0/token
             user-info-uri: https://openapi.naver.com/v1/nid/me
-#            user-info-authentication-method: header
+            #            user-info-authentication-method: header
             user-name-attribute: response # Naver 응답 값 resultCode, message, response 중 response 지정
 
           kakao:
@@ -69,6 +63,12 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id # 유저 정보 조회 시 반환되는 최상위 필드명으로 해야 한다.
 
-#      resourceserver:
-#        jwt:
-#          issuer-uri: https://accounts.google.com/.well-known/openid-configuration
+logging.level:
+  org.hibernate.SQL: debug
+logging:
+  level:
+    org.springframework.data.redis: debug
+
+custom:
+  jwt:
+    key: "${JWT_KEY}"

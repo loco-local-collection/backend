@@ -1,0 +1,4 @@
+package com.loco.platform.config;
+
+public class OAuth2SuccessHandler {
+}
