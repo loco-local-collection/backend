@@ -71,4 +71,4 @@ logging:
 
 custom:
   jwt:
-    key: "${custom.jwt.key}"
+    key: "${JWT_KEY}"
